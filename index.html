@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Livecounts.net</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://GraphifyAssets.imtca.repl.co/odometer.css"
+    />
+    <script src="https://GraphifyAssets.imtca.repl.co/odometer.js"></script>
+  </head>
+  <body>
+    <h1 class="title">Real-Time YouTube Subscriber Count</h1>
+    <p class="subtitle">by @ToastifyDev</p>
+    <a id="imageLink" target="_blank">
+      <img
+        id="image"
+        alt="Colleen Ballinger"
+        src="https://yt3.ggpht.com/5TSarMoLOZ2qUjwsI55B4YalpHbB7gTUMOwqOFcbc4dmVt-32mCcAgjM7vOQfFIO37qjMGqB=s200-c-k-c0x00ffffff-no-rj"
+      />
+    </a>
+    <a id="subscribeBtn">Subscribe</a>
+    <p id="name" onclick="search()">ToastyDev</p>
+    <span id="subscribers" class="odometer">0</span>
+    <div id="footer">
+      <img
+        class="icon"
+        src="https://livecounts.net/menu.svg"
+        alt="Menu"
+        title="I don't work."
+        width="25"
+        height="25"
+        align="right"
+      />
+    </div>
+    <div class="container">
+      <span id="goal" class="odometer">0</span>
+      <p id="goalText">subscribers to 5</p>
+    </div>
+    <i class="updateText">updated every 2 seconds</i>
+  </body>
+  <script src="script.js"></script>
+</html>
