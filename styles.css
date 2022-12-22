@@ -12,6 +12,11 @@ body {
   overflow: hidden;
 }
 
+body.light {
+  background-color: rgb(208, 228, 254);
+  color: black;
+}
+
 .title {
   position: absolute;
   left: 0;
@@ -180,6 +185,7 @@ body {
   height: 40px;
   width: 100%;
   background: #246;
+  color: white;
   display: -webkit-box;
   display: -moz-box;
   display: -ms-flexbox;
@@ -203,4 +209,16 @@ body {
   top: 0px;
   bottom: 0px;
   margin: auto;
+}
+
+body.light #light {
+  display: none;
+}
+
+body:not(.light) #dark {
+  display: none;
+}
+
+input[type="radio"] {
+  display: none;
 }

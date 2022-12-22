@@ -56,6 +56,21 @@ setInterval(() => {
     });
 }, 2000);
 
+function toggleLightMode() {
+  document.body.classList.toggle("light");
+
+  const localTheme = localStorage.getItem("theme");
+  if (!localTheme || localTheme === "dark")
+    localStorage.setItem("theme", "light");
+  else localStorage.setItem("theme", "dark");
+}
+
+window.onload = () => {
+  const localTheme = localStorage.getItem("theme");
+  if (localTheme && localTheme === "light")
+    document.body.classList.toggle("light");
+};
+
 function search() {
   const prompt = window.prompt("Enter channel name, ID, or URL.");
   if (prompt) {

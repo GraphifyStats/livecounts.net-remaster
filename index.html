@@ -32,8 +32,9 @@
       href="https://GraphifyAssets.imtca.repl.co/odometer.css"
     />
     <script src="https://GraphifyAssets.imtca.repl.co/odometer.js"></script>
+    <script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script>
   </head>
-  <body>
+  <body class="">
     <h1 class="title">Real-Time YouTube Subscriber Count</h1>
     <p class="subtitle">by @ToastifyDev</p>
     <a id="imageLink" target="_blank">
@@ -46,22 +47,27 @@
     <a id="subscribeBtn">Subscribe</a>
     <p id="name" onclick="search()">ToastyDev</p>
     <span id="subscribers" class="odometer">0</span>
-    <div id="footer">
-      <img
-        class="icon"
-        src="https://livecounts.net/menu.svg"
-        alt="Menu"
-        title="I don't work."
-        width="25"
-        height="25"
-        align="right"
-      />
-    </div>
     <div class="container">
       <span id="goal" class="odometer">0</span>
       <p id="goalText">subscribers to 5</p>
     </div>
     <i class="updateText">updated every 2 seconds</i>
+    <div id="footer">
+      <span
+        class="iconify icon"
+        id="light"
+        data-icon="ph:sun-bold"
+        onclick="toggleLightMode()"
+        data-width="25"
+      ></span>
+      <span
+        class="iconify icon"
+        id="dark"
+        data-icon="ph:moon-bold"
+        onclick="toggleLightMode()"
+        data-width="25"
+      ></span>
+    </div>
   </body>
   <script src="script.js"></script>
 </html>
