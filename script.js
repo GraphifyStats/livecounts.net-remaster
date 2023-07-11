@@ -34,25 +34,28 @@ document.getElementById(
   "subscribeBtn"
 ).href = `https://youtube.com/channel/${id}?sub_confirmation=1`;
 
-fetch(`https://mixerno.space/api/youtube-channel-counter/user/${id}`)
-  .then((res) => res.json())
-  .then((data) => {
-    document.getElementById("name").textContent = data.user[0].count;
-
-    const image = document.getElementById("image");
-    image.src = data.user[1].count;
-    image.alt = data.user[0].count;
-  });
-
 setInterval(() => {
-  fetch(`https://livecounts.xyz/api/youtube-live-subscriber-count/live/${id}`)
+  fetch(`https://axern.space/api/get?platform=youtube&type=channel&id=${id}`)
     .then((res) => res.json())
     .then((data) => {
-      document.getElementById("subscribers").innerHTML = data.counts[0];
-      document.getElementById("goal").innerHTML = GetGoal(data.counts[0]);
+      document.getElementById("name").textContent = data.snippet.title;
+      document.querySelector(
+        '[data-icon="zondicons:checkmark"]'
+      ).style.display = data.isStudio ? "block" : "none";
+
+      const image = document.getElementById("image");
+      image.src =
+        data.snippet.thumbnails.high.url ||
+        data.snippet.thumbnails.medium.url ||
+        data.snippet.thumbnails.default.url;
+      image.alt = data.snippet.title;
+      document.getElementById("subscribers").innerHTML = data.estSubCount;
+      document.getElementById("goal").innerHTML = GetGoal(data.estSubCount);
       document.getElementById(
         "goalText"
-      ).textContent = `subscribers to ${GetGoalText(GetGoal2(data.counts[0]))}`;
+      ).textContent = `subscribers to ${GetGoalText(
+        GetGoal2(data.estSubCount)
+      )}`;
     });
 }, 2000);
 
@@ -67,17 +70,25 @@ function toggleLightMode() {
 
 window.onload = () => {
   const localTheme = localStorage.getItem("theme");
-  if (localTheme && localTheme === "light")
-    document.body.classList.toggle("light");
+  if (!localTheme) {
+    if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+      localStorage.setItem("theme", "dark");
+    } else if (window.matchMedia("(prefers-color-scheme: light)").matches) {
+      document.body.classList.toggle("light");
+      localStorage.setItem("theme", "light");
+    }
+  }
+  if (localTheme === "light") document.body.classList.toggle("light");
 };
 
 function search() {
   const prompt = window.prompt("Enter channel name, ID, or URL.");
-  if (prompt) {
-    fetch(`https://mixerno.space/api/youtube-channel-counter/search/${prompt}`)
+  if (prompt)
+    fetch(
+      `https://axern.space/api/search?platform=youtube&type=channel&query=${prompt}`
+    )
       .then((res) => res.json())
       .then((data) => {
-        window.location.href = "?id=" + data.list[0][2];
+        window.location.href = "?id=" + data[0].id;
       });
-  }
 }

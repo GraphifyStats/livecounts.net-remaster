@@ -88,23 +88,30 @@ body.light {
   }
 }
 
-#name {
+.name {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: center;
   position: absolute;
   left: 0;
   right: 0;
-  margin: 0 auto;
   font-size: 3vw;
   top: 34.5%;
 }
 
+#name {
+  margin: 0;
+}
+
 @media only screen and (min-aspect-ratio: 6/5) {
-  #name {
+  .name {
     top: 28%;
   }
 }
 
 @media only screen and (min-aspect-ratio: 5/3) {
-  #name {
+  .name {
     top: 26%;
   }
 }
